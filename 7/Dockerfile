@@ -32,7 +32,7 @@ RUN set -xe; \
     existing_user=$(getent passwd "${WODBY_USER_ID}" | cut -d: -f1); \
     if [[ -n "${existing_user}" ]]; then deluser "${existing_user}"; fi; \
     \
-	addgroup -l -g "${WODBY_GROUP_ID}" -S wodby; \
+	addgroup -g "${WODBY_GROUP_ID}" -S wodby; \
 	adduser -l -u "${WODBY_USER_ID}" -D -S -s /bin/bash -G wodby wodby; \
 	adduser wodby www-data; \
 	sed -i '/^wodby/s/!/*/' /etc/shadow; \
